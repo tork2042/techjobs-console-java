@@ -3,6 +3,7 @@ package org.launchcode.techjobs.console;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
+import org.w3c.dom.ls.LSOutput;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,6 +11,7 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by LaunchCode
@@ -125,4 +127,32 @@ public class JobData {
         }
     }
 
+    public static void findByValue(String value) {
+
+        // load data, if not already loaded
+        loadData();
+
+        ArrayList<HashMap<String, String>> jobs = new ArrayList<>();
+
+        for (HashMap<String, String> row : allJobs) {
+            for (String key : row.keySet()) {
+                String aValue = row.get(key);
+                if (aValue.contains(value)) {
+                    jobs.add(row);
+                }
+            }
+        }
+        for (HashMap<String, String> foundJobs : jobs) {
+            System.out.println("\n*****");
+            for (Map.Entry<String, String> eachJob : foundJobs.entrySet()) {
+
+                System.out.println(eachJob.getKey() + ": " + eachJob.getValue());
+
+            }
+            System.out.println("*****\n");
+        }
+//            for (int i = 0; i < jobs.size(); i++) {
+//                System.out.println("\n*****" + jobs.get(i) + ":" + jobs.get(i) + "*****\n");
+//            }
+    }
 }

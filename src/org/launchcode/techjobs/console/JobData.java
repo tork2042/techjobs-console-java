@@ -157,8 +157,5 @@ public class JobData {
             }
             System.out.println("*****\n");
         }
-//            for (int i = 0; i < jobs.size(); i++) {
-//                System.out.println("\n*****" + jobs.get(i) + ":" + jobs.get(i) + "*****\n");
-//            }
     }
 }
